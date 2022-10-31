@@ -1,0 +1,40 @@
+#define LED 3
+//#define BOMBA 12
+#define HUMEDAD A3
+#define PASOSY 4
+#define DIRECCIONY 7
+#define FINALDECARRERAY 11
+#define HABILITARMOTORES 8
+
+void setup()
+{
+  // pinMode(BOMBA, OUTPUT);
+  // digitalWrite(BOMBA, LOW); // PROTECCIÓN DE LA BOMBA
+  pinMode(HUMEDAD, INPUT);
+  //pinMode(LED, OUTPUT);
+  Serial.begin(9600);
+  pinMode(PASOSY, OUTPUT),
+  pinMode(DIRECCIONY, OUTPUT);
+  pinMode(FINALDECARRERAY, INPUT);
+  pinMode(HABILITARMOTORES, OUTPUT);
+}
+
+void loop()
+{
+  //int HUMEDADOPTIMA = 270;
+  //int LECTURADEHUMEDAD = analogRead(HUMEDAD);
+ // Serial.print("VALOR DE HUMEDAD: ");
+  //Serial.println(LECTURADEHUMEDAD);
+ // delay(500);
+  digitalWrite(DIRECCIONY, LOW);
+  digitalWrite(HABILITARMOTORES,LOW);
+void HomeMotorY()
+   digitalWrite(DIRECCIONY, LOW);
+   while (digitalRead(FINALDECARRERAY) == 1)
+  {
+    digitalWrite(PASOSY, HIGH);
+    delay(1);
+    digitalWrite(PASOSY, LOW);
+    delay(1);
+  }
+}
